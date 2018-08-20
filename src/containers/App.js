@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-// import style from '../styles/main.scss';
-// import SearchBar from './SearchBar';
 import WeatherList from './WeatherList';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchWeather } from '../actions/index';
+
+import style from '../css/main.css';
 
 class App extends Component {
 
@@ -16,8 +16,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="">
-        {/* <SearchBar /> */}
+      <div className="container">
         <WeatherList />
       </div>
     );
