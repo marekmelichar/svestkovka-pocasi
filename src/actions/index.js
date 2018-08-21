@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL = `http://dataservice.accuweather.com`;
+const ROOT_URL = `https://dataservice.accuweather.com`;
 
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 
