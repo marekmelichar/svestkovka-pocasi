@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import _ from 'lodash';
 import moment from 'moment';
 
 import mraky from '../svg/pocasi_mraky.svg';
 import polojasno from '../svg/pocasi_polojasno.svg';
 import slunce from '../svg/pocasi_slunce.svg';
 
-moment.locale('cs')
+import Icon from '../components/Icon';
+
+import csLocale from 'moment/locale/cs';
+moment.locale('cs', csLocale)
 
 class WeatherList extends Component {
 
@@ -39,10 +41,6 @@ class WeatherList extends Component {
     const day_two = cityData.DailyForecasts[1]
     const day_three = cityData.DailyForecasts[2]
 
-    // console.log('day_one', day_one);
-    // console.log('day_two', day_two);
-    // console.log('day_three', day_three);
-
     let day_one_icon = this.cloudCover(day_one.Day.CloudCover)
     let day_two_icon = this.cloudCover(day_two.Day.CloudCover)
     let day_three_icon = this.cloudCover(day_three.Day.CloudCover)
@@ -50,22 +48,82 @@ class WeatherList extends Component {
     return (
       <React.Fragment key={`${day_one.EpochTime}`}>
         <div className="col-md-4">
-          <div className="date">{moment(day_one.Date).format('dddd, DoM.YYYY')}</div>
-          <div className="rain">Srážky: {day_one.Day.Rain.Value} {day_one.Day.Rain.Unit}</div>
-          <div className="wind">Vítr: {day_one.Day.Wind.Speed.Value} {day_one.Day.Wind.Speed.Unit}</div>
-          <div className="temperature"><img src={day_one_icon} className="day-one-icon" alt="day one icon" /> {day_one.Temperature.Maximum.Value} {day_one.Temperature.Maximum.Unit}</div>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="date">{moment(day_one.Date).format('dddd, DoM.YYYY')}</div>
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <td>Srážky:</td>
+                    <td><strong>{day_one.Day.RainProbability} %</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Vítr:</td>
+                    <td><strong>{Math.ceil(day_one.Day.Wind.Speed.Value)} {day_one.Day.Wind.Speed.Unit}</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="col-md-6">
+              <div className="temperature group">
+                <Icon icon={day_one_icon} />
+                <div className="temperature-value">{Math.ceil(day_one.Temperature.Maximum.Value)}</div>
+                <div className="celsius">°C</div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="col-md-4">
-          <div className="date">{moment(day_two.Date).format('dddd, DoM.YYYY')}</div>
-          <div className="rain">Srážky: {day_two.Day.Rain.Value} {day_two.Day.Rain.Unit}</div>
-          <div className="wind">Vítr: {day_two.Day.Wind.Speed.Value} {day_two.Day.Wind.Speed.Unit}</div>
-          <div className="temperature"><img src={day_two_icon} className="day-two-icon" alt="day two icon" /> {day_two.Temperature.Maximum.Value} {day_one.Temperature.Maximum.Unit}</div>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="date">{moment(day_two.Date).format('dddd, DoM.YYYY')}</div>
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <td>Srážky:</td>
+                    <td><strong>{day_two.Day.RainProbability} %</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Vítr:</td>
+                    <td><strong>{Math.ceil(day_two.Day.Wind.Speed.Value)} {day_two.Day.Wind.Speed.Unit}</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="col-md-6">
+              <div className="temperature group">
+                <Icon icon={day_two_icon} />
+                <div className="temperature-value">{Math.ceil(day_two.Temperature.Maximum.Value)}</div>
+                <div className="celsius">°C</div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="col-md-4">
-          <div className="date">{moment(day_three.Date).format('dddd, DoM.YYYY')}</div>
-          <div className="rain">Srážky: {day_three.Day.Rain.Value} {day_three.Day.Rain.Unit}</div>
-          <div className="wind">Vítr: {day_three.Day.Wind.Speed.Value} {day_three.Day.Wind.Speed.Unit}</div>
-          <div className="temperature"><img src={day_three_icon} className="day-three-icon" alt="day three icon" /> {day_three.Temperature.Maximum.Value} {day_one.Temperature.Maximum.Unit}</div>
+          <div className="row">
+            <div className="col-md-6">
+              <div className="date">{moment(day_three.Date).format('dddd, DoM.YYYY')}</div>
+              <table className="table">
+                <tbody>
+                  <tr>
+                    <td>Srážky:</td>
+                    <td><strong>{day_three.Day.RainProbability} %</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Vítr:</td>
+                    <td><strong>{Math.ceil(day_three.Day.Wind.Speed.Value)} {day_three.Day.Wind.Speed.Unit}</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="col-md-6">
+              <div className="temperature group">
+                <Icon icon={day_three_icon} />
+                <div className="temperature-value">{Math.ceil(day_three.Temperature.Maximum.Value)}</div>
+                <div className="celsius">°C</div>
+              </div>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     )
@@ -73,9 +131,14 @@ class WeatherList extends Component {
 
   render() {
     return(
-      <div className="row">
-        {this.props.weather.map(this.renderWeather)}
-      </div>
+      <React.Fragment>
+        <div className="row">
+          <div className="col"><h2 className="text-center"><strong>Ústecko - výhled počasí</strong></h2></div>
+        </div>
+        <div className="row mt-3">
+          {this.props.weather.map(this.renderWeather)}
+        </div>
+      </React.Fragment>
     );
   }
 }

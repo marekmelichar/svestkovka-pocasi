@@ -1,0 +1,67 @@
+#root_weather_forecast {
+  font-family: "Montserrat", sans-serif;
+  color: #005194;
+  margin: 1.5rem 0;
+}
+
+#root_weather_forecast h2 {
+  font-size: 1,375rem;
+}
+
+#root_weather_forecast .temperature  .temperature-icon {
+  position: absolute;
+  width: 70px;
+  top: 16px;
+  left: -16px;
+}
+
+#root_weather_forecast .temperature  .temperature-icon.slunce {
+  width: 64px;
+}
+
+#root_weather_forecast .temperature  .temperature-value {
+  position: absolute;
+  top: 12px;
+  left: 62px;
+  font-size: 3.3rem;
+  font-weight: 800;
+}
+
+#root_weather_forecast .temperature  .celsius {
+  position: absolute;
+  top: 12px;
+  left: 120px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+#root_weather_forecast .group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#root_weather_forecast .date {
+  position: relative;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+#root_weather_forecast .date:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  height: 1px;
+  background-color: #005194;
+}
+
+#root_weather_forecast table td {
+  border-top: none;
+  padding: 0 0 0 0;
+}
+
+#root_weather_forecast table tbody tr:first-child td {
+  padding: 0.5rem 0 0 0;
+}
