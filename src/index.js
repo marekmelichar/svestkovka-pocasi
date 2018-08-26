@@ -9,8 +9,24 @@ import App from './containers/App';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-, document.getElementById('root_weather_forecast'));
+const rootRender = document.getElementById('root_weather_forecast')
+
+if (rootRender) {
+  ReactDOM.render(
+    <Provider store={createStoreWithMiddleware(reducers)}>
+      <App />
+    </Provider>
+  , document.getElementById('root_weather_forecast'));
+}
+
+// ReactDOM.render(
+//   <Provider store={createStoreWithMiddleware(reducers)}>
+//     <App />
+//   </Provider>
+// , document.getElementById('root_weather_forecast'));
+
+// ReactDOM.render(
+//   <Provider store={createStoreWithMiddleware(reducers)}>
+//     <App />
+//   </Provider>
+// , document.getElementById('root_weather_forecast'));
