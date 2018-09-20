@@ -37,29 +37,29 @@ class WeatherList extends Component {
 
   renderWeather(cityData) {
 
-    const day_one = cityData.DailyForecasts[0]
-    const day_two = cityData.DailyForecasts[1]
-    const day_three = cityData.DailyForecasts[2]
+    const day_one = cityData.list[0]
+    const day_two = cityData.list[1]
+    const day_three = cityData.list[2]
 
-    let day_one_icon = this.cloudCover(day_one.Day.CloudCover)
-    let day_two_icon = this.cloudCover(day_two.Day.CloudCover)
-    let day_three_icon = this.cloudCover(day_three.Day.CloudCover)
+    let day_one_icon = this.cloudCover(day_one.clouds.all)
+    let day_two_icon = this.cloudCover(day_two.clouds.all)
+    let day_three_icon = this.cloudCover(day_three.clouds.all)
 
     return (
-      <React.Fragment key={`${day_one.EpochTime}`}>
+      <React.Fragment key={`${day_one.dt}`}>
         <div className="col-md-4">
           <div className="row">
             <div className="col-md-6">
-              <div className="date">{moment(day_one.Date).format('dddd, DoM.YYYY')}</div>
+              <div className="date">{moment(day_one.dt).format('dddd, DoM.YYYY')}</div>
               <table className="table">
                 <tbody>
                   <tr>
                     <td>Srážky:</td>
-                    <td><strong>{day_one.Day.RainProbability} %</strong></td>
+                    <td><strong>{day_one.rain ? day_one.rain : '0'} mm</strong></td>
                   </tr>
                   <tr>
                     <td>Vítr:</td>
-                    <td><strong>{Math.ceil(day_one.Day.Wind.Speed.Value)} {day_one.Day.Wind.Speed.Unit}</strong></td>
+                    <td><strong>{Math.ceil(day_one.wind.speed)} m/s</strong></td>
                   </tr>
                 </tbody>
               </table>
@@ -67,59 +67,7 @@ class WeatherList extends Component {
             <div className="col-md-6">
               <div className="temperature group">
                 <Icon icon={day_one_icon} />
-                <div className="temperature-value">{Math.ceil(day_one.Temperature.Maximum.Value)}</div>
-                <div className="celsius">°C</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="date">{moment(day_two.Date).format('dddd, DoM.YYYY')}</div>
-              <table className="table">
-                <tbody>
-                  <tr>
-                    <td>Srážky:</td>
-                    <td><strong>{day_two.Day.RainProbability} %</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Vítr:</td>
-                    <td><strong>{Math.ceil(day_two.Day.Wind.Speed.Value)} {day_two.Day.Wind.Speed.Unit}</strong></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="col-md-6">
-              <div className="temperature group">
-                <Icon icon={day_two_icon} />
-                <div className="temperature-value">{Math.ceil(day_two.Temperature.Maximum.Value)}</div>
-                <div className="celsius">°C</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="date">{moment(day_three.Date).format('dddd, DoM.YYYY')}</div>
-              <table className="table">
-                <tbody>
-                  <tr>
-                    <td>Srážky:</td>
-                    <td><strong>{day_three.Day.RainProbability} %</strong></td>
-                  </tr>
-                  <tr>
-                    <td>Vítr:</td>
-                    <td><strong>{Math.ceil(day_three.Day.Wind.Speed.Value)} {day_three.Day.Wind.Speed.Unit}</strong></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="col-md-6">
-              <div className="temperature group">
-                <Icon icon={day_three_icon} />
-                <div className="temperature-value">{Math.ceil(day_three.Temperature.Maximum.Value)}</div>
+                <div className="temperature-value">{Math.ceil(day_one.main.temp_max)}</div>
                 <div className="celsius">°C</div>
               </div>
             </div>
