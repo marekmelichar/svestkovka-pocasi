@@ -149,9 +149,6 @@ class WeatherList extends Component {
   render() {
     return(
       <React.Fragment>
-        <div className="row">
-          <div className="col"><h2 className="text-center"><strong>Ústecko - výhled počasí</strong></h2></div>
-        </div>
         <div className="row mt-3">
           {this.props.weather.map(this.renderWeather)}
         </div>

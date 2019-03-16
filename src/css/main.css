@@ -1,7 +1,11 @@
 #root_weather_forecast {
-  font-family: "Montserrat", sans-serif;
-  color: #005194;
+  font-family: 'source_sans_proregular', sans-serif;
+  color: #404D7A;
   margin: 3rem 0 1.5rem 0;
+}
+
+#root_weather_forecast strong {
+  font-family: 'source_sans_probold', sans-serif;
 }
 
 #root_weather_forecast h2 {
@@ -20,11 +24,11 @@
 }
 
 #root_weather_forecast .temperature  .temperature-value {
+  font-family: 'source_sans_probold', sans-serif;
   position: absolute;
   top: 12px;
   left: 62px;
   font-size: 3.3rem;
-  font-weight: 800;
 }
 
 #root_weather_forecast .temperature  .celsius {
@@ -42,9 +46,9 @@
 }
 
 #root_weather_forecast .date {
+  font-family: 'source_sans_probold', sans-serif;
   position: relative;
   font-size: 1rem;
-  font-weight: 800;
 }
 
 #root_weather_forecast .date:after {
@@ -54,7 +58,7 @@
   bottom: 0;
   width: 80%;
   height: 1px;
-  background-color: #005194;
+  background-color: #404D7A;
 }
 
 #root_weather_forecast table td {
@@ -64,45 +68,4 @@
 
 #root_weather_forecast table tbody tr:first-child td {
   padding: 0.5rem 0 0 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#root_weather_forecast .temperature {
-  margin-bottom: 2rem;
-}
-
-#root_weather_forecast .temperature .temperature-icon {
-  position: relative;
-  width: 70px;
-  top: -10px;
-  left: -6px;
-}
-
-#root_weather_forecast .temperature .temperature-value {
-  position: absolute;
-  top: -11px;
-  left: 82px;
-  font-size: 3.3rem;
-  font-weight: 800;
-}
-
-#root_weather_forecast .temperature .celsius {
-  position: absolute;
-  top: -10px;
-  left: 140px;
-  font-size: 1rem;
-  font-weight: 400;
 }
