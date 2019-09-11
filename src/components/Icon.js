@@ -4,15 +4,15 @@ const Icon = (props) => {
 
   let iconCustomClassName = ''
 
-  if (props.icon.includes('polojasno')) {
+  if (props.icon && props.icon.includes('polojasno')) {
     iconCustomClassName = 'polojasno'
   }
 
-  if (props.icon.includes('slunce')) {
+  if (props.icon && props.icon.includes('slunce')) {
     iconCustomClassName = 'slunce'
   }
 
-  if (props.icon.includes('mraky')) {
+  if (props.icon && props.icon.includes('mraky')) {
     iconCustomClassName = 'mraky'
   }
 
